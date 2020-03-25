@@ -8,8 +8,8 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>edu.eci.arsw</groupId>
-    <artifactId>Covid-19API</artifactId>
+    <groupId>edu.eci</groupId>
+    <artifactId>arsw</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Covid-19API</name>
     <description>Demo project for Spring Boot</description>
