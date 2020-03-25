@@ -6,7 +6,10 @@
 package edu.eci.arsw.Covid19BackEnd.services;
 
 import com.mashape.unirest.http.JsonNode;
+import edu.eci.arsw.Covid19BackEnd.model.Province;
 import java.io.IOException;
+import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -14,7 +17,7 @@ import java.io.IOException;
  */
 public interface ConexionService {
     
-    public String GetCasesByCountry(String name) ; 
+    /*public String GetCasesByCountry(String name) ; */
     
-    public String GetAllCases() ; 
+    public List<Province> GetAllCases() ; 
 }

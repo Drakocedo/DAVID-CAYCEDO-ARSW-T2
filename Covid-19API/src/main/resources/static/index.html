@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Coronavirus</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="app.js"></script>
+        <script src="apiClient.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <style>
+            #map {
+                height: 400px;
+                width: 100%;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body onload="app.findAll()">
+
+        <h1> COVID-19 Coronavirus ARSW</h1>
+        <table  id="tablaPaises" class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Country</th>
+                    <th scope="col">Num Deaths</th>
+                    <th scope="col">Num Infected</th>
+                    <th scope="col">Num cured</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>   
+
+    </body>
+
+
+    }
+</html>

@@ -26,7 +26,7 @@ public class CovidController {
     @Qualifier("CovidServicesImpl")
     CovidServiceImpl cs;
     
-
+/*
     @RequestMapping(path = "/{name}", method = RequestMethod.GET)
     public ResponseEntity<?> getCasesByCountry(@PathVariable(name = "name") String nombre) {
         try {
@@ -37,7 +37,7 @@ public class CovidController {
             return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
         }
     }
-    
+ */   
     @RequestMapping( method = RequestMethod.GET)
     public ResponseEntity<?> getAllCases() {
         
