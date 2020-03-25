@@ -7,54 +7,59 @@ package edu.eci.arsw.Covid19BackEnd.services.impl;
 
 
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import edu.eci.arsw.Covid19BackEnd.services.ConexionService;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author david
  */
+@Service("HttpConnectionImpl")
 public class HttpConnectionImpl implements ConexionService{
     @Override
-    public String CovidByCountry(String name) throws IOException{
-        
-        String USER_AGENT = "Mozilla/5.0";
-        String GET_URL = "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text="+name;
-        URL obj = new URL(GET_URL);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("GET");
-        con.setRequestProperty("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com");
-        con.setRequestProperty("x-rapidapi-key", "44e05e8a84msh20cfe27fb6ce493p1e0dcdjsnb2c38f63528b");
-        
-        //The following invocation perform the connection implicitly before getting the code
-        int responseCode = con.getResponseCode();
-        System.out.println("GET Response Code :: " + responseCode);
-        
-        if (responseCode == HttpURLConnection.HTTP_OK) { // success
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((inputLine = in.readLine()) != null) {
-  
-                response.append(inputLine);
-            }
-            in.close();
-
-            // print result
-
-            return response.toString();
-        } else {
-
-            return "GET request not worked";
+    public String GetCasesByCountry(String name) {
+        HttpResponse<String> response= null;
+        try {
+             response = Unirest
+                    .get("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country="+name)
+                    .header("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com")
+                    .header("x-rapidapi-key", "34f05cff54msh30ba6f36c91c183p166499jsn555917ef62b8")
+                    .asString();
+        } catch (UnirestException ex) {
+            Logger.getLogger(HttpConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    
-
+        
+        
+        return response.getBody();
+       
     }
     
+
+    @Override
+    public String GetAllCases() {
+         HttpResponse<String> response= null;
+        try {
+             response = Unirest
+                    .get("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats")
+                    .header("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com")
+                    .header("x-rapidapi-key", "34f05cff54msh30ba6f36c91c183p166499jsn555917ef62b8")
+                    .asString();
+        } catch (UnirestException ex) {
+            Logger.getLogger(HttpConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return response.getBody();
+    }
 }

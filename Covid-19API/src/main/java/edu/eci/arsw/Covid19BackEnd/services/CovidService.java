@@ -6,14 +6,12 @@
 package edu.eci.arsw.Covid19BackEnd.services;
 
 import com.mashape.unirest.http.JsonNode;
-import java.io.IOException;
 
 /**
  *
  * @author david
  */
-public interface ConexionService {
-    
+public interface CovidService {
     public String GetCasesByCountry(String name) ; 
     
     public String GetAllCases() ; 
